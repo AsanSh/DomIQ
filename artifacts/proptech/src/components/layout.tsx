@@ -10,6 +10,7 @@ import {
 	Building,
 	Building2,
 	Calendar,
+	Camera,
 	CheckSquare,
 	ChevronDown,
 	ChevronRight,
@@ -72,7 +73,7 @@ import { NotificationBell } from "@/components/notifications/NotificationBell";
 import UserProfileDropdown from "@/components/user-profile-dropdown";
 import { useModuleAccess } from "@/hooks/use-module-access";
 import { useAuth } from "@/lib/auth";
-import { detectModuleFromPath, type ModuleId } from "@/lib/module-access";
+import { type ModuleId } from "@/lib/module-access";
 import { getModuleDefinition } from "@/lib/module-registry";
 import { resolveQuickActions } from "@/lib/quick-create-access";
 import { resolveNavItemHref } from "@/lib/nav-hrefs";
@@ -620,12 +621,123 @@ const MODULES: Module[] = [
 	},
 ];
 
+const DOMIQ_MODULE: Module = {
+	id: "consolidated",
+	label: "DomIQ",
+	shortLabel: "DomIQ",
+	icon: Building2,
+	color: "#0f766e",
+	urlPrefix: ["/"],
+	sections: [
+		{
+			title: "Главная",
+			items: [
+				{ href: "/dashboard?tab=control", label: "Операционный обзор", icon: LayoutDashboard },
+				{ href: "/construction/projects", label: "Активные проекты", icon: Building2 },
+				{ href: "/construction/analytics/cashflow", label: "Поступления и расходы", icon: BarChart3 },
+				{ href: "/construction/analytics/debt", label: "Долги и риски", icon: AlertTriangle },
+			],
+		},
+		{
+			title: "Проекты",
+			items: [
+				{ href: "/construction/projects", label: "Список проектов", icon: Building2 },
+				{ href: "/construction/stages", label: "Очереди и этапы", icon: Flag },
+				{ href: "/construction/reports", label: "Показатели проекта", icon: ClipboardList },
+				{ href: "/construction/photo-gallery", label: "Файлы и фото", icon: FileText },
+			],
+		},
+		{
+			title: "Шахматка",
+			items: [
+				{ href: "/construction/chess", label: "Юниты и этажи", icon: Grid3X3 },
+				{ href: "/construction/contracts-sales", label: "Договоры продаж", icon: FileText },
+				{ href: "/construction/accruals", label: "Графики оплат", icon: ListOrdered },
+				{ href: "/construction/cashier", label: "Приём платежей", icon: DollarSign },
+				{ href: "/construction/reconciliation", label: "Акт сверки", icon: Scale },
+			],
+		},
+		{
+			title: "CRM",
+			items: [
+				{ href: "/crm/leads", label: "Лиды", icon: Target },
+				{ href: "/crm/deals", label: "Сделки", icon: TrendingUp },
+				{ href: "/crm/clients", label: "Клиенты", icon: Users },
+				{ href: "/crm/sales-contracts", label: "Брони и продажи", icon: FileText },
+				{ href: "/construction/planning/broadcast", label: "Рассылки", icon: Send },
+				{ href: "/crm/client-relations", label: "История коммуникаций", icon: MessageCircle },
+			],
+		},
+		{
+			title: "Контрагенты",
+			items: [
+				{ href: "/counterparties", label: "Единый справочник", icon: Users },
+				{ href: "/construction/contractors", label: "Подрядчики", icon: Briefcase },
+				{ href: "/warehouse/suppliers", label: "Поставщики", icon: Factory },
+				{ href: "/construction/employees", label: "Сотрудники", icon: UserCircle },
+				{ href: "/users", label: "Порталы и доступы", icon: ShieldCheck },
+			],
+		},
+		{
+			title: "Финансы",
+			items: [
+				{ href: "/construction/accounts", label: "Счета и касса", icon: Landmark },
+				{ href: "/construction/operations", label: "Поступления и платежи", icon: ArrowRightLeft },
+				{ href: "/construction/accruals", label: "Начисления", icon: ListOrdered },
+				{ href: "/construction/planning/forecast", label: "Платёжный календарь", icon: Calendar },
+				{ href: "/construction/analytics/debt", label: "Задолженности", icon: AlertTriangle },
+				{ href: "/construction/analytics/cashflow", label: "ДДС", icon: BarChart3 },
+			],
+		},
+		{
+			title: "Себестоимость",
+			items: [
+				{ href: "/construction/budget", label: "Бюджет проекта", icon: Wallet },
+				{ href: "/construction/expenses", label: "Статьи затрат", icon: Receipt },
+				{ href: "/construction/materials", label: "Материалы", icon: Package },
+				{ href: "/construction/contractors", label: "Работы и подрядчики", icon: Hammer },
+				{ href: "/construction/analytics/expenses", label: "План/факт", icon: PieChart },
+				{ href: "/construction/analytics/pnl", label: "Маржа и рентабельность", icon: LineChart },
+			],
+		},
+		{
+			title: "Производство",
+			items: [
+				{ href: "/construction/tasks", label: "Задачи и график", icon: CheckSquare },
+				{ href: "/construction/workers", label: "Бригады на объекте", icon: HardHat },
+				{ href: "/construction/stages", label: "Этапы работ", icon: Flag },
+				{ href: "/warehouse/requests", label: "Снабжение", icon: Truck },
+				{ href: "/warehouse/approvals", label: "Акты и согласования", icon: ShieldCheck },
+				{ href: "/construction/photo-gallery", label: "Прогресс строительства", icon: Camera },
+			],
+		},
+		{
+			title: "Отчеты",
+			items: [
+				{ href: "/construction/reports", label: "Отчет по проекту", icon: BarChart3 },
+				{ href: "/reports/payments", label: "Оплаты", icon: Activity },
+				{ href: "/reports/debt", label: "Задолженность", icon: AlertTriangle },
+				{ href: "/reports/cashflow", label: "Денежный поток", icon: BarChart3 },
+				{ href: "/reports/directions", label: "Контрагенты", icon: Users },
+			],
+		},
+		{
+			title: "Настройки",
+			items: [
+				{ href: "/settings", label: "Компания", icon: Settings },
+				{ href: "/users", label: "Пользователи", icon: UserCircle },
+				{ href: "/settings/roles", label: "Роли и права", icon: ShieldCheck },
+				{ href: "/settings/legal", label: "Юрлица", icon: Building },
+				{ href: "/settings/categories", label: "Статусы и справочники", icon: ListOrdered },
+				{ href: "/import", label: "Импорт данных", icon: Package },
+				{ href: "/settings/soon", label: "Скоро", icon: Zap },
+			],
+		},
+	],
+};
+
 function getModuleEntryHref(mod: Module): string {
 	return mod.sections[0]?.items[0]?.href || "/dashboard";
-}
-
-function detectModule(path: string): ModuleId {
-	return detectModuleFromPath(path);
 }
 
 function getDashboardTabLabel(path: string): string | null {
@@ -802,15 +914,8 @@ export function Layout({ children }: { children: ReactNode }) {
 		return () => document.removeEventListener("mousedown", handleClickOutside);
 	}, []);
 
-	const allowedVisibleModules = MODULES.filter((m) =>
-		allowedModules.includes(m.id),
-	);
-	const businessModules = allowedVisibleModules.filter((m) => m.id !== "consolidated");
-	const activeModuleId = detectModule(pathWithSearch);
-	const visibleModules =
-		businessModules.length <= 1 && activeModuleId !== "consolidated"
-			? businessModules
-			: allowedVisibleModules;
+	const allowedVisibleModules = [DOMIQ_MODULE];
+	const visibleModules = allowedVisibleModules;
 
 	useEffect(() => {
 		if (accessLoading || !user) return;
@@ -819,27 +924,26 @@ export function Layout({ children }: { children: ReactNode }) {
 		}
 	}, [accessLoading, user, pathWithSearch, canAccess, homePath, setLocation]);
 
-	const activeModule =
-		allowedVisibleModules.find((m) => m.id === activeModuleId) ||
-		allowedVisibleModules[0] ||
-		MODULES.find((m) => m.id === activeModuleId) ||
-		MODULES[MODULES.length - 1];
+	const activeModule = DOMIQ_MODULE;
 	const ModuleIcon = activeModule.icon;
 	const activeModuleShortLabel =
 		getDashboardTabLabel(pathWithSearch) || activeModule.shortLabel;
 	const quickActions = useMemo(
 		() =>
-			resolveQuickActions(
-				activeModule.id,
-				role,
-				permissions,
-				allowedModules,
+			["construction", "proptech", "finance", "warehouse", "consolidated"].flatMap(
+				(moduleId) =>
+					resolveQuickActions(
+						moduleId as ModuleId,
+						role,
+						permissions,
+						allowedModules,
+					),
 			),
-		[activeModule.id, role, permissions, allowedModules],
+		[role, permissions, allowedModules],
 	);
 	const showQuickCreate = quickActions.length > 0;
 	const sidebarCollapsed = !sidebarPinned && !sidebarHovered;
-	const showModuleSwitcher = visibleModules.length > 1;
+	const showModuleSwitcher = false;
 	const adminRoles = new Set(["company_admin", "admin", "super_admin"]);
 	const isAdminUser = adminRoles.has(String((user as { role?: string })?.role ?? role));
 
@@ -847,9 +951,9 @@ export function Layout({ children }: { children: ReactNode }) {
 		const userRole = (user as { role?: string })?.role;
 		const isPtoRole = userRole === "pto" || userRole === "engineer";
 		let sections = activeModule.sections;
-		if (isPtoRole && activeModule.id === "construction") {
+		if (isPtoRole) {
 			sections = sections.filter((s) =>
-				["Главный поток", "Себестоимость"].includes(s.title),
+				["Главная", "Проекты", "Шахматка", "Себестоимость", "Производство"].includes(s.title),
 			);
 		}
 		if (!isAdminUser) {

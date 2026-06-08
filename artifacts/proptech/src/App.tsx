@@ -157,6 +157,7 @@ import SettingsCategories from "@/pages/settings/categories";
 import SettingsLegal from "@/pages/settings/legal-entities";
 import SettingsPeriods from "@/pages/settings/periods";
 import SettingsRoles from "@/pages/settings/roles";
+import SettingsSoon from "@/pages/settings/soon";
 import SettingsSystemAccounts from "@/pages/settings/system-accounts";
 import Users from "@/pages/users";
 import WarehouseCompanies from "@/pages/warehouse/companies";
@@ -726,6 +727,9 @@ function Router() {
 			</Route>
 			<Route path="/settings/periods">
 				<ProtectedRoute component={SettingsPeriods} />
+			</Route>
+			<Route path="/settings/soon">
+				<ProtectedRoute component={SettingsSoon} />
 			</Route>
 
 			<Route component={NotFound} />

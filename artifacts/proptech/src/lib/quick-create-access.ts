@@ -17,7 +17,7 @@ const QUICK_ACTIONS: QuickAction[] = [
 	{ module: "rental", label: "Договор аренды", href: "/rental/contracts?new=1", permission: "rental.contracts.create", roles: ["company_admin", "admin", "rental_manager"] },
 	{ module: "rental", label: "Платёж аренды", href: "/rental/payments?new=1", permission: "rental.payments.create", roles: ["company_admin", "admin", "rental_manager", "finance"] },
 	{ module: "proptech", label: "Лид", href: "/crm/leads?new=1", permission: "crm.leads.create", roles: ["company_admin", "admin", "sales_manager"] },
-	{ module: "warehouse", label: "Поступление", href: "/warehouse/receipts?new=1", permission: "warehouse.receipts.create", roles: ["company_admin", "admin"] },
+	{ module: "warehouse", label: "Поступление", href: "/warehouse/incoming?new=1", permission: "warehouse.receipts.create", roles: ["company_admin", "admin"] },
 	{ module: "consolidated", label: "Контрагент", href: "/counterparties?new=1", permission: "counterparties.create", roles: ["company_admin", "admin", "finance"] },
 ];
 
