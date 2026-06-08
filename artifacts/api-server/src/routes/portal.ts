@@ -535,7 +535,7 @@ router.post("/portal/create-buyer-account", requireRole("admin", "company_admin"
       linkedEntityId: buyerId,
     });
     const { passwordHash: _ph, ...safeUser } = result.user;
-    const origin = (req.headers.origin as string) || "https://proptech-sigma-eight.vercel.app";
+    const origin = (req.headers.origin as string) || "https://domiq-gamma.vercel.app";
     res.status(result.created ? 201 : 200).json({
       user: safeUser,
       loginUrl: `${origin}/portal-login`,

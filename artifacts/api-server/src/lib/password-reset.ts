@@ -99,7 +99,7 @@ export function getFrontendBaseUrl(): string {
   const raw =
     process.env.FRONTEND_URL ||
     process.env.APP_URL ||
-    "https://proptech-sigma-eight.vercel.app";
+    "https://domiq-gamma.vercel.app";
   return raw.replace(/\/+$/, "");
 }
 

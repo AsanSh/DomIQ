@@ -1250,7 +1250,7 @@ async function notifyTaskAssigned(params: {
     const [recipient] = await db.select().from(usersTable).where(eq(usersTable.id, assignedToId));
     const [assigner] = await db.select().from(usersTable).where(eq(usersTable.id, assignerId));
     if (recipient?.email) {
-      const baseOrigin = origin || "https://proptech-sigma-eight.vercel.app";
+      const baseOrigin = origin || "https://domiq-gamma.vercel.app";
       const taskUrl = `${baseOrigin}/construction/tasks/${taskId}`;
       const assignerName = assigner ? `${assigner.firstName} ${assigner.lastName}`.trim() : "Коллега";
       // Fire-and-forget: не блокируем создание задачи на отправке email.
