@@ -633,18 +633,14 @@ const DOMIQ_MODULE: Module = {
 			title: "Главная",
 			items: [
 				{ href: "/dashboard?tab=control", label: "Операционный обзор", icon: LayoutDashboard },
-				{ href: "/construction/projects", label: "Активные проекты", icon: Building2 },
-				{ href: "/construction/analytics/cashflow", label: "Поступления и расходы", icon: BarChart3 },
-				{ href: "/construction/analytics/debt", label: "Долги и риски", icon: AlertTriangle },
+				{ href: "/activity", label: "Критические события", icon: AlertTriangle },
+				{ href: "/companies", label: "Компании", icon: Building },
 			],
 		},
 		{
 			title: "Проекты",
 			items: [
 				{ href: "/construction/projects", label: "Список проектов", icon: Building2 },
-				{ href: "/construction/stages", label: "Очереди и этапы", icon: Flag },
-				{ href: "/construction/reports", label: "Показатели проекта", icon: ClipboardList },
-				{ href: "/construction/photo-gallery", label: "Файлы и фото", icon: FileText },
 			],
 		},
 		{
@@ -652,7 +648,6 @@ const DOMIQ_MODULE: Module = {
 			items: [
 				{ href: "/construction/chess", label: "Юниты и этажи", icon: Grid3X3 },
 				{ href: "/construction/contracts-sales", label: "Договоры продаж", icon: FileText },
-				{ href: "/construction/accruals", label: "Графики оплат", icon: ListOrdered },
 				{ href: "/construction/cashier", label: "Приём платежей", icon: DollarSign },
 				{ href: "/construction/reconciliation", label: "Акт сверки", icon: Scale },
 			],
@@ -675,7 +670,6 @@ const DOMIQ_MODULE: Module = {
 				{ href: "/construction/contractors", label: "Подрядчики", icon: Briefcase },
 				{ href: "/warehouse/suppliers", label: "Поставщики", icon: Factory },
 				{ href: "/construction/employees", label: "Сотрудники", icon: UserCircle },
-				{ href: "/users", label: "Порталы и доступы", icon: ShieldCheck },
 			],
 		},
 		{
@@ -695,7 +689,6 @@ const DOMIQ_MODULE: Module = {
 				{ href: "/construction/budget", label: "Бюджет проекта", icon: Wallet },
 				{ href: "/construction/expenses", label: "Статьи затрат", icon: Receipt },
 				{ href: "/construction/materials", label: "Материалы", icon: Package },
-				{ href: "/construction/contractors", label: "Работы и подрядчики", icon: Hammer },
 				{ href: "/construction/analytics/expenses", label: "План/факт", icon: PieChart },
 				{ href: "/construction/analytics/pnl", label: "Маржа и рентабельность", icon: LineChart },
 			],
