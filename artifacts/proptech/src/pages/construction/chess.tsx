@@ -107,8 +107,17 @@ function parseNumberInput(value: unknown) {
 	return Number.isFinite(parsed) ? parsed : 0;
 }
 
+function toBooleanFlag(value: unknown) {
+	return value === true || value === 1 || value === "1" || value === "true";
+}
+
+function toBooleanFlagWithDefault(value: unknown, fallback: boolean) {
+	if (value == null) return fallback;
+	return toBooleanFlag(value);
+}
+
 function isUnitPublishedForSale(unit: Pick<Unit, "isPublishedForSale" | "approvedSalePricePerSqm">) {
-	return unit.isPublishedForSale === true && parseFloat(String(unit.approvedSalePricePerSqm || "0")) > 0;
+	return toBooleanFlag(unit.isPublishedForSale) && parseFloat(String(unit.approvedSalePricePerSqm || "0")) > 0;
 }
 
 function approvedPricePerSqm(unit: Pick<Unit, "approvedSalePricePerSqm" | "pricePerSqm">) {
@@ -528,7 +537,7 @@ function UnitPricingDialog({
 	const [form, setForm] = useState({
 		basePricePerSqm: unit.basePricePerSqm || unit.pricePerSqm || "",
 		saleCoefficient: unit.saleCoefficient || "1",
-		isPublishedForSale: unit.isPublishedForSale !== false,
+		isPublishedForSale: toBooleanFlagWithDefault(unit.isPublishedForSale, true),
 	});
 	const [loading, setLoading] = useState(false);
 

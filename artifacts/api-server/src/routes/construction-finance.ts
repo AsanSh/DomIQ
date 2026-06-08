@@ -43,9 +43,13 @@ const router = Router();
 
 router.use(requireAuth, requireTenantCompany, requireEnabledModule("finance"));
 
+function isTrueFlag(value: unknown): boolean {
+  return value === true || value === 1 || value === "1" || value === "true";
+}
+
 function unitIsSellable(unit: typeof constructionUnitsTable.$inferSelect): boolean {
   return (
-    unit.isPublishedForSale === true &&
+    isTrueFlag(unit.isPublishedForSale) &&
     !!unit.approvedSalePricePerSqm &&
     parseFloat(String(unit.approvedSalePricePerSqm)) > 0
   );
