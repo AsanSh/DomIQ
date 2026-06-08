@@ -3,7 +3,8 @@ export function getApiBase(): string {
 	const fallback = import.meta.env.PROD
 		? "https://domiq-api.vercel.app"
 		: "http://localhost:3000";
-	const raw = (import.meta.env.VITE_API_URL || fallback).trim();
+	const envUrl = (import.meta.env.VITE_API_URL || "").trim();
+	const raw = envUrl.includes("proptech-api.vercel.app") ? fallback : (envUrl || fallback);
 	let base = raw.replace(/\/+$/, "");
 	if (!base) base = fallback;
 
